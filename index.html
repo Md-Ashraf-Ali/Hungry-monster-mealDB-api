@@ -12,23 +12,19 @@
 </head>
 <body>
     <div class="container" >
-       <h1>Hungry monster</h1>
+       <h1 class="header">Hungry monster</h1>
        <div class="flex">
-          <input type="text" id="search-field" placeholder="search for meal">
+          <input type="text" id="search-field" placeholder="search meal names">
           <button onclick="searchMeals()" type="submit" class="search-btn" >
           <i class="fas fa-search"></i>
           </button> 
        </div>
-       
-   
    </div>
+   <h3 id="error-message"></h3>
 
-   <div id="meal-container">
+   <div id="Meal-thumb"> </div>
 
-   </div>
-   <div id="Meal-thumb">
-       
-   </div>
+   <div id="meal-container" id="hide-area"> </div>
 
     <script src="app.js"></script>
 </body>

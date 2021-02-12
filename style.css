@@ -1,6 +1,10 @@
 *{
     box-sizing: border-box;
 }
+.header {
+    font-size: 50px;
+    color: navy;
+}
 
 body{
     background: cadetblue;
@@ -16,49 +20,114 @@ body{
     justify-content: center;
     text-align: center;
 }
+
 .flex{
     display: flex;
 }
 
-input,button{
-    height: 50px;
-    border: 1px;
+input {
+    height: 40px;
+    width: 66px;
+    border: 2px solid;
+    font-size: 20px;
+    color: white;
+    background: darkgoldenrod;
+    margin-bottom: 20px; 
+}
+
+.search-btn{
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid;
+    width: 66px;
+    background-color: darkgoldenrod;
+}
+
+#search-field{
+    color: rgb(60, 25, 126);
+    padding-left: 10px;
+}
+
+button {
+    height: 30px;
+    width: 66px;
+    border: 1px solid;
     border-radius: 4px;
     font-size: 14px;
-    margin: 0;
-    padding: 10px;
+    color: white;
+    padding: 0px;
+    background: rgb(156, 172, 17);
 }
+
 input[type="text"]{
     width: 400px;
 }
-.search-btn{
-    cursor: pointer;
-    border: 0;
-    width: 70px;
-    background-color: darkgoldenrod;
-}
+
 .meal-style{
-    border: 1px solid;
+    border: 1px black;
     border-radius: 20px;
-    padding: 5px;
     text-align: center;
     width: 400px;
-
+    box-shadow: 5px 5px black;
+    background: rgb(179, 134, 134);
+    margin-top: 30px;
 }
-.meal-header{
-    font-size: 40px;
+
+.meal-header {
+    font-size: 30px;
     color: darkslateblue;
     font-weight: bold;
     text-align: center;
+    margin: 0;
 }
-.meal-info{
-    font-size: 18px;
-    color: rgb(235, 222, 222);
-    line-height: 18px;
+
+.meal-info {
+    color: blue;
     text-align: center;
+    margin: 0 auto;
 }
-#meal-container{
+
+#meal-container {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 6px;
+    margin-top: 60px;
+    background: aqua;
+    box-shadow: bisque;
+    grid-row-gap: 24px;
+}
+
+.img-size{
+    height: 200px;
+    width: 100%;
+}
+
+#Meal-thumb {
+    margin: 0 auto;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 21px;
+    padding: 10px;
+    display: none;
+    height: auto;
+    margin-bottom: 30px;
+    background: cyan;
+}
+
+.thumb-img {
+    height: 321px;
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+#error-message{
+    text-align: center;
+    color: red;
+    font-size: 50px;
 }

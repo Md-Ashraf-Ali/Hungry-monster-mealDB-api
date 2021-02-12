@@ -4,80 +4,55 @@ const searchMeals = () => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
     fetch(url)
     .then(res => res.json())
-    .then(data => displayMeals(data.meals));
+    .then(data => displayMeals(data.meals))
+    .catch(error => showDisplayError(' Hi!, something is wrong!! please try again later.'));
 }
 
-const displayMeals = meals => {
+const displayMeals = items => {
     const mealContainer = document.getElementById('meal-container');
-    meals.forEach(meal => {
+    mealContainer.innerHTML = "";
+    items.forEach(item => {
       const mealDiv = document.createElement('div');
       mealDiv.className = 'meal-style';
-    //   const h3 = document.createElement('h3');
-    //   h3.innerText = meal.strCategory;
-    //   mealDiv.appendChild(h3);
-    //   const p = document.createElement('p');
-    //   p.innerText = meal.strInstructions;
-    //   mealDiv.appendChild(p);
-
       const mealInfo = `
-      <h3 class="meal-header">${meal.strCategory}</h3>
-      <p class="meal-info">${meal.strInstructions}</p>
-      <button onclick ="displayMealDetails('${meals.strMealThumb}')">Details</button>
+      <h3 class="meal-header">${item.strMeal}</h3>
+      <img class ="img-size" src ="${item.strMealThumb}">
+      <button onclick = "displayMealDetails('${item.idMeal}')">Details</button>
       `;
-
       mealDiv.innerHTML = mealInfo;
       mealContainer.appendChild(mealDiv);
     })
+
+    const displayHideDetails = document.getElementById('Meal-thumb');
+    displayHideDetails.style.display = "none";
 } 
 
-
-displayMealDetails = details => {
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${details}`
+ const displayMealDetails = (details) => {
+     console.log(details);
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${details}`
     fetch(url)
     .then(res => res.json())
-    .then(data = console.log(meals[0]));
-
+    .then(data => showDetails(data.meals[0]))
 }
-const strMealThumb = thumb =>{
-    console.log(thumb);
+
+const showDetails = thumb =>{
     const thumbDiv = document.getElementById('Meal-thumb');
+    thumbDiv.style.display ="block";
     thumbDiv.innerHTML = `
-    <img src="www.themealdb.com\/images\/media\/meals\/qxytrx1511304021.jpg"">
-    `
+    <img class="thumb-img" src="${thumb.strMealThumb}">
+    <h4 class="meal-info">${thumb.strArea}</h4>
+    <h3 class="meal-header">${thumb.strMeal}</h3>
+    <p class="meal-info">${thumb.strInstructions}</p>
+    `;
+
+    const displayHide = document.getElementById('meal-container');
+    displayHide.style.display = "none";
+}
+const showDisplayError = error => {
+    const missingTag = document.getElementById('error-message');
+    missingTag.innerText = error;
 }
 
 
 
-// function searchMeal(e){
-//     e.presentDefault();
 
-//     singleMeal.innerHTML = "";
-
-//     const term = search.value;
-
-//     if (term.trim()) {
-//         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
-//         .then((res) => res.json())
-//         .then((data) => {
-//             console.log(data);
-//             resultHeading.innerHTML = `<h2> Search Result for ${term}`;
-//             if (data.meals === null){
-//                 resultHeading.innerHTML = `<h2> There Are No Result for ${term}`;
-
-//             }
-//             else{
-//               mealEl.innerHTML = data.meals.map(
-//                 meal =>`
-//                     <div class = "meal">
-//                     <img src = " ${meal.strMealThumb}" alt = "${meal.strMeal}">
-//                     </div>
-//                     `
-//              );
-//            }
-//         });
-        
-//     }
-// }
-
-
-// submit.addEventListener('submit',searchMeal);
